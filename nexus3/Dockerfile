@@ -72,6 +72,9 @@ RUN yum install -y --disableplugin=subscription-manager hostname procps \
 
 VOLUME ${NEXUS_DATA}
 
+USER root
+RUN chgrp -R 0 /nexus-data/instances ../sonatype-work /tmp/jvm.log && chmod -R g=u /nexus-data/instances ../sonatype-work /tmp/jvm.log
+
 EXPOSE 8081
 USER nexus
 
